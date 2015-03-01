@@ -10,6 +10,32 @@ $initial_id = avia_get_the_ID();
 
 // check if we got posts to display:
 if (have_posts()) :
+        echo "<span class='post-meta-infos'>";
+        $markup = avia_markup_helper(array('context' => 'entry_time','echo'=>false));
+
+
+            $taxonomies  = get_object_taxonomies(get_post_type($the_id));
+            $cats = '';
+            $excluded_taxonomies =  apply_filters('avf_exclude_taxonomies', array('post_tag','post_format'), get_post_type($the_id), $the_id);
+
+            if(!empty($taxonomies))
+            {
+                foreach($taxonomies as $taxonomy)
+                {
+                    if(!in_array($taxonomy, $excluded_taxonomies))
+                    {
+                        $myTaxonomy = strip_tags(get_the_term_list($the_id, $taxonomy, '', ', ',''));
+                        $cats .= '<h4 class="b_taxonomy" id="'.$myTaxonomy.'">'.$myTaxonomy.'</h4>';
+                    }
+                }
+            }
+
+            if(!empty($cats)) {
+                echo $cats;
+            }
+
+
+        echo '</span>';
 
 	while (have_posts()) : the_post();
 
@@ -128,31 +154,6 @@ if (have_posts()) :
         echo "<div class='entry-content-wrapper clearfix {$post_format}-content'>";
             echo '<header class="entry-content-header">';
 
-                echo "<span class='post-meta-infos'>";
-                $markup = avia_markup_helper(array('context' => 'entry_time','echo'=>false));
-
-
-                    $taxonomies  = get_object_taxonomies(get_post_type($the_id));
-                    $cats = '';
-                    $excluded_taxonomies =  apply_filters('avf_exclude_taxonomies', array('post_tag','post_format'), get_post_type($the_id), $the_id);
-
-                    if(!empty($taxonomies))
-                    {
-                        foreach($taxonomies as $taxonomy)
-                        {
-                            if(!in_array($taxonomy, $excluded_taxonomies))
-                            {
-                                $cats .= get_the_term_list($the_id, $taxonomy, '', ', ','').' ';
-                            }
-                        }
-                    }
-
-                    if(!empty($cats)) {
-                        echo $cats;
-                    }
-
-
-                echo '</span>';
 
                 echo '<div class="business_info">';
                     echo '<div class="flex_column av_one_half first  avia-builder-el-1  el_after_av_textblock  el_before_av_one_half ">';

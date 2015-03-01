@@ -23,5 +23,10 @@
 }
 
 .template-blog .type-business .post_delimiter{
-	margin-bottom:0;
+	margin-bottom:40px;
+	padding:0;
+}
+
+.b_taxonomy{
+	padding-top:30px;
 }

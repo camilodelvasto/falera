@@ -320,9 +320,11 @@ if ( !class_exists( 'avia_sc_business' ) )
 				if(isset($terms[0]) && !empty($terms[0]) && !is_null($terms[0]) && $terms[0] != "null" && !empty($params['taxonomy']))
 				{
 					$query = array(	'paged' 	=> $page,
-									'posts_per_page' => $params['items'],
+									'posts_per_page' => '-1',
                                     'offset' => $params['offset'],
                                     'post__not_in' => (!empty($no_duplicates)) ? $avia_config['posts_on_current_page'] : array(),
+                                    'orderby' => 'title',
+                                    'order' => 'ASC',
                                     'post_type' => $params['post_type'],
 									'tax_query' => array( 	array( 	'taxonomy' 	=> $params['taxonomy'],
 																	'field' 	=> 'id',

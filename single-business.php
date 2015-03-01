@@ -34,7 +34,7 @@
                     *
                     */
 
-                        get_template_part( 'includes/loop', 'index' );
+                        get_template_part( 'includes/loop', 'business' );
 						
                         //show related posts based on tags if there are any
                         get_template_part( 'includes/related-posts');
