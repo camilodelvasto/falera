@@ -127,7 +127,6 @@ if (have_posts()) :
 
         echo "<div class='entry-content-wrapper clearfix {$post_format}-content'>";
             echo '<header class="entry-content-header">';
-                echo '<h2 class="post-title entry-title">'.get_the_title().'</h2>';
 
                 echo "<span class='post-meta-infos'>";
                 $markup = avia_markup_helper(array('context' => 'entry_time','echo'=>false));
@@ -154,6 +153,22 @@ if (have_posts()) :
 
 
                 echo '</span>';
+
+                echo '<div class="business_info">';
+                    echo '<div class="flex_column av_one_half first  avia-builder-el-1  el_after_av_textblock  el_before_av_one_half ">';
+                        echo get_the_title();
+                        if ($b_address = get_post_meta( get_the_ID(), 'address', true )) echo '<p>'.$b_address.'</p>'; 
+                    echo '</div>';
+                    echo '<div class="flex_column av_one_half   avia-builder-el-3  el_after_av_one_half  el_before_av_one_half ">';
+                        if ($b_telephone = get_post_meta( get_the_ID(), 'telephone', true )) echo '<p><span>Tel</span>'.$b_telephone.'</p>'; 
+                        if ($b_telephone_2 = get_post_meta( get_the_ID(), 'telephone_2', true )) echo '<p><span>Tel</span>'.$b_telephone_2.'</p>'; 
+                        if ($b_fax = get_post_meta( get_the_ID(), 'fax', true )) echo '<p><span>Fax</span>'.$b_fax.'</p>'; 
+                        if ($b_e_mail = get_post_meta( get_the_ID(), 'e_mail', true )) echo '<p><span>E-Mail </span><a href="mailto:'.$b_e_mail.'">'.$b_e_mail.'</a></p>'; 
+                        if ($b_website = get_post_meta( get_the_ID(), 'website', true )) echo '<p><span>Web </span><a href="'.$b_website.'">'.$b_website.'</a></p>'; 
+                        if ($b_other = get_post_meta( get_the_ID(), 'other', true )) echo '<p><span></span>'.$b_other.'</p>'; 
+                    echo '</div>';
+                echo '</div>';
+
             echo '</header>';
 
 

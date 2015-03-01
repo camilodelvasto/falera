@@ -8,3 +8,20 @@
  Version:      1.0.0
  Text Domain:  falera
 */
+
+.business_info span{
+	width:50px;
+	display:inline-block;
+}
+
+.business_info p{
+	margin:0;
+}
+
+.type-business .post-meta-infos{
+	top: 0;
+}
+
+.template-blog .type-business .post_delimiter{
+	margin-bottom:0;
+}
