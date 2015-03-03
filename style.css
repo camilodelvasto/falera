@@ -22,11 +22,16 @@
 	top: 0;
 }
 
-.template-blog .type-business .post_delimiter{
+.template-blog .type-business .post_delimiter, .business_wrapper .post_delimiter{
 	margin-bottom:40px;
 	padding:0;
 }
 
 .b_taxonomy{
 	padding-top:30px;
+}
+
+/* Font styles */
+body h2{
+	text-transform: none !important;
 }
